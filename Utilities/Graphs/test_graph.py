@@ -3,7 +3,7 @@ import unittest
 
 class MyTestCase(unittest.TestCase):
     def test_topological_order(self):
-        from Utilities.Utilities.Graphs.graph_theory_dfs import Graph
+        from Utilities.Graphs.graph_theory_dfs import Graph
         graph = Graph()
         graph.add_edge(1, 2)
         graph.add_edge(2, 3)
