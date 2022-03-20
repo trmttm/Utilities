@@ -224,3 +224,17 @@ def create_folder(path):
 
 def is_directory(path) -> bool:
     return os.path.isdir(path)
+
+
+def create_tree_data(parent: str, index: str, text: str, values: tuple, tags: tuple, select: bool, id_=None) -> dict:
+    tree_data = {
+        'parent': parent,
+        'index': index,
+        'text': text,
+        'values': values,
+        'tags': tags,
+        'select_this_item': select
+    }
+    if id_ is not None:
+        tree_data['id'] = id_
+    return tree_data
