@@ -1,6 +1,7 @@
 import os
 import shutil
 import sys
+from typing import Iterable
 from typing import Tuple
 
 import os_identifier
@@ -238,3 +239,9 @@ def create_tree_data(parent: str, index: str, text: str, values: tuple, tags: tu
     if id_ is not None:
         tree_data['id'] = id_
     return tree_data
+
+
+def create_view_model_tree(headings: tuple, widths: tuple, tree_datas: Iterable, stretches: tuple, scroll_v: bool,
+                           scroll_h: bool) -> dict:
+    return {'tree_datas': tree_datas, 'headings': headings, 'widths': widths, 'stretches': stretches,
+            'scroll_v': scroll_v, 'scroll_h': scroll_h, }
