@@ -227,7 +227,8 @@ def is_directory(path) -> bool:
     return os.path.isdir(path)
 
 
-def create_tree_data(parent: str, index: str, text: str, values: tuple, tags: tuple, select: bool, id_=None) -> dict:
+def create_tree_data(parent: str, index: str, text: str, values: tuple, tags: tuple, select: bool, id_=None,
+                     foreground: str = None, background: str = None) -> dict:
     tree_data = {
         'parent': parent,
         'index': index,
@@ -238,6 +239,10 @@ def create_tree_data(parent: str, index: str, text: str, values: tuple, tags: tu
     }
     if id_ is not None:
         tree_data['id'] = id_
+    if foreground is not None:
+        tree_data['foreground_color'] = foreground
+    if background is not None:
+        tree_data['background_color'] = background
     return tree_data
 
 
