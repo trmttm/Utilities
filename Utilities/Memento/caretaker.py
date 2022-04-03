@@ -80,6 +80,9 @@ class Caretaker(CaretakerABC):
     def restore_merge(self, memento: MementoABC, *args, **kwargs):
         self._originator.restore_merge(copy.deepcopy(memento), *args, **kwargs)
 
+    def restore_merge_insert(self, memento: MementoABC, *args, **kwargs):
+        self._originator.restore_merge_insert(copy.deepcopy(memento), *args, **kwargs)
+
     @property
     def name(self) -> str:
         return self._originator.__class__.__name__

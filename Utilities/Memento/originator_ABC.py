@@ -16,3 +16,6 @@ class OriginatorABC(ABC):
     @abstractmethod
     def restore_merge(self, memento: MementoABC, *args, **kwargs):
         pass
+
+    def restore_merge_insert(self, memento: MementoABC, *args, **kwargs):
+        pass
