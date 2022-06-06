@@ -245,11 +245,11 @@ def create_tree_data(parent: str, index: str, text: str, values: tuple, tags: tu
     if background:
         tree_data['background_color'] = background
     if strikethrough:
-        tree_data['strikethrough'] = background
+        tree_data['strikethrough'] = strikethrough
     if underline:
-        tree_data['underline'] = background
+        tree_data['underline'] = underline
     if bold:
-        tree_data['bold'] = background
+        tree_data['bold'] = bold
     return tree_data
 
 
