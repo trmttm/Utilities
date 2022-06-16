@@ -257,3 +257,7 @@ def create_view_model_tree(headings: tuple, widths: tuple, tree_datas: Iterable,
                            scroll_h: bool) -> dict:
     return {'tree_datas': tree_datas, 'headings': headings, 'widths': widths, 'stretches': stretches,
             'scroll_v': scroll_v, 'scroll_h': scroll_h, }
+
+
+def get_two_digit_str_from_int(n: int) -> str:
+    return f'0{n}' if n < 10 else f'{n}'
