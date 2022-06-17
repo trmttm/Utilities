@@ -1,6 +1,9 @@
 import os
 import shutil
 import sys
+from os import listdir
+from os.path import isfile
+from os.path import join
 from typing import Iterable
 from typing import Tuple
 
@@ -261,3 +264,10 @@ def create_view_model_tree(headings: tuple, widths: tuple, tree_datas: Iterable,
 
 def get_two_digit_str_from_int(n: int) -> str:
     return f'0{n}' if n < 10 else f'{n}'
+
+
+def get_files_in_the_folder(folder_path: str, specified_extension: str = '') -> Tuple[str, ...]:
+    files = [f for f in listdir(folder_path) if isfile(join(folder_path, f))]
+    if specified_extension:
+        files = [f for f in files if f[-1 * len(specified_extension):] == specified_extension]
+    return tuple(files)
