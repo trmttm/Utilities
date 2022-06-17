@@ -271,3 +271,19 @@ def get_files_in_the_folder(folder_path: str, specified_extension: str = '') -> 
     if specified_extension:
         files = [f for f in files if f[-1 * len(specified_extension):] == specified_extension]
     return tuple(files)
+
+
+def get_proper_path_depending_on_development_or_distribution(relative_path):
+    possible_overlap = relative_path.split('/')[0]
+    folder_path = os.path.join(sys.path[0], relative_path)
+    if possible_overlap != '':
+        folder_path = remove_overlap(folder_path, possible_overlap)
+    if not (os.path.exists(folder_path)):
+        folder_path = f'{os.getcwd()}/{relative_path}'
+    if possible_overlap != '':
+        folder_path = remove_overlap(folder_path, possible_overlap)
+    return folder_path
+
+
+def remove_overlap(folder_path, possible_overlap):
+    return folder_path.replace(f'{possible_overlap}/{possible_overlap}', possible_overlap)
