@@ -270,7 +270,7 @@ def get_files_in_the_folder(folder_path: str, specified_extension: str = '') -> 
     files = [f for f in listdir(folder_path) if isfile(join(folder_path, f))]
     if specified_extension:
         files = [f for f in files if f[-1 * len(specified_extension):] == specified_extension]
-    return tuple(files)
+    return tuple(sorted(files))
 
 
 def get_proper_path_depending_on_development_or_distribution(relative_path):
