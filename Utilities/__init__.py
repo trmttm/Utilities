@@ -1,3 +1,4 @@
+import datetime
 import os
 import shutil
 import sys
@@ -287,3 +288,20 @@ def get_proper_path_depending_on_development_or_distribution(relative_path):
 
 def remove_overlap(folder_path, possible_overlap):
     return folder_path.replace(f'{possible_overlap}/{possible_overlap}', possible_overlap)
+
+
+def time_delta_str_to_time_delta(time_expected_str) -> datetime.timedelta:
+    if 'day' in time_expected_str:
+        try:
+            str_before_days, str_rest = time_expected_str.split('day,')
+        except ValueError:
+            str_before_days, str_rest = time_expected_str.split('days,')
+    else:
+        str_before_days = '0'
+        str_rest = time_expected_str
+    days = int(str_before_days)
+    hours_str, minutes_str, seconds_str = str_rest.split(':')
+    hours, minutes, seconds = int(hours_str), int(minutes_str), int(seconds_str)
+    total_seconds = 60 * 60 * hours + 60 * minutes + seconds
+
+    return datetime.timedelta(days, total_seconds)
