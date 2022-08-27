@@ -1,6 +1,7 @@
 import datetime
 import os
 import shutil
+import subprocess
 import sys
 from os import listdir
 from os.path import isfile
@@ -315,3 +316,10 @@ def datetime_to_str(d: datetime.datetime):
 
 def int_to_str(i: int) -> str:
     return f'0{i}' if i < 10 else f'{i}'
+
+
+def copy_to_clipboard(text: str):
+    try:
+        subprocess.run("pbcopy", universal_newlines=True, input=text)
+    except FileNotFoundError:
+        subprocess.run("pbcopy", universal_newlines=True, input=text, shell=True)
