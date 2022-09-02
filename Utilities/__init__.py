@@ -282,7 +282,7 @@ def get_proper_path_depending_on_development_or_distribution(relative_path):
     if possible_overlap != '':
         folder_path = remove_overlap(folder_path, possible_overlap)
     if not (os.path.exists(folder_path)):
-        folder_path = f'{os.getcwd()}/{relative_path}'
+        folder_path = os.path.join(os.getcwd(), relative_path)
     if possible_overlap != '':
         folder_path = remove_overlap(folder_path, possible_overlap)
     return folder_path
