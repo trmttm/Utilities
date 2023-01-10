@@ -315,6 +315,15 @@ def datetime_to_str(d: datetime.datetime):
     return due_date_str
 
 
+def str_to_date_time(datetime_str) -> datetime.datetime:
+    year_str, month_str, day_time_str = datetime_str.split('/')
+    day_str, time_str = day_time_str.split(' ')
+    hour_str, minute_str = time_str.split(':')
+    year, month, day = int(year_str), int(month_str), int(day_str)
+    hour, minute = int(hour_str), int(minute_str)
+    return datetime.datetime(year, month, day, hour, minute)
+
+
 def int_to_str(i: int) -> str:
     return f'0{i}' if i < 10 else f'{i}'
 
