@@ -255,7 +255,7 @@ def create_tree_data(parent: str, index: str, text: str, values: tuple, tags: tu
     if underline:
         tree_data['underline'] = underline
     if bold:
-        tree_data['bold'] = bold
+        tree_data['weight'] = 'bold'
     return tree_data
 
 
@@ -315,6 +315,12 @@ def datetime_to_str(d: datetime.datetime):
     return due_date_str
 
 
+def datetime_to_str_no_time(d: datetime.datetime):
+    f = int_to_str
+    due_date_str = f'{d.year}/{f(d.month)}/{f(d.day)}'
+    return due_date_str
+
+
 def str_to_date_time(datetime_str) -> datetime.datetime:
     year_str, month_str, day_time_str = datetime_str.split('/')
     day_str, time_str = day_time_str.split(' ')
@@ -322,6 +328,12 @@ def str_to_date_time(datetime_str) -> datetime.datetime:
     year, month, day = int(year_str), int(month_str), int(day_str)
     hour, minute = int(hour_str), int(minute_str)
     return datetime.datetime(year, month, day, hour, minute)
+
+
+def str_to_date_time_no_time(datetime_str) -> datetime.datetime:
+    year_str, month_str, day_str = datetime_str.split('/')
+    year, month, day = int(year_str), int(month_str), int(day_str)
+    return datetime.datetime(year, month, day)
 
 
 def int_to_str(i: int) -> str:
