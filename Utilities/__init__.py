@@ -1,6 +1,7 @@
 import datetime
 import math
 import os
+import platform
 import shutil
 import subprocess
 import sys
@@ -375,3 +376,12 @@ def round_decimals_down(number: float, decimals: int = 2):
 
     factor = 10 ** decimals
     return math.floor(number * factor) / factor
+
+
+def open_file(path):
+    if platform.system() == "Windows":
+        os.startfile(path)
+    elif platform.system() == "Darwin":
+        subprocess.Popen(["open", path])
+    else:
+        subprocess.Popen(["xdg-open", path])
