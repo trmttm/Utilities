@@ -17,7 +17,10 @@ class TreeData:
 
     @property
     def names(self) -> tuple:
-        return tuple(self._data[self._key_name])
+        try:
+            return tuple(self._data[self._key_name])
+        except:
+            return ()
 
     @property
     def data(self) -> tuple:
