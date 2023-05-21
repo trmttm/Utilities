@@ -323,7 +323,7 @@ def datetime_to_str_no_time(d: datetime.datetime):
 
 
 def str_to_date_time(datetime_str) -> datetime.datetime:
-    year_str, month_str, day_time_str = datetime_str.split('/')
+    year_str, month_str, day_time_str = datetime_str.replace('-', '/').split('/')
     day_str, time_str = day_time_str.split(' ')
     hour_str, minute_str = time_str.split(':')
     year, month, day = int(year_str), int(month_str), int(day_str)
