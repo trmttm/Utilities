@@ -332,7 +332,8 @@ def str_to_date_time(datetime_str) -> datetime.datetime:
 
 
 def str_to_date_time_no_time(datetime_str) -> datetime.datetime:
-    year_str, month_str, day_str = datetime_str.split('/')
+    year_str, month_str, day_str = datetime_str.replace('-', '/').split('/')
+    day_str = day_str.split(' ')[0]  # datetime_str may contain time information such as '2023-05-18 09:00:00'
     year, month, day = int(year_str), int(month_str), int(day_str)
     return datetime.datetime(year, month, day)
 
