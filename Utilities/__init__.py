@@ -324,7 +324,10 @@ def datetime_to_str_no_time(d: datetime.datetime):
 
 def str_to_date_time(datetime_str) -> datetime.datetime:
     year_str, month_str, day_time_str = datetime_str.replace('-', '/').split('/')
-    day_str, time_str = day_time_str.split(' ')
+    try:
+        day_str, time_str = day_time_str.split(' ')
+    except ValueError:
+        return str_to_date_time_no_time(datetime_str)
     if len(time_str.split(':')) == 3:
         hour_str, minute_str, seconds_str = time_str.split(':')
     else:
