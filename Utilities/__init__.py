@@ -325,7 +325,10 @@ def datetime_to_str_no_time(d: datetime.datetime):
 def str_to_date_time(datetime_str) -> datetime.datetime:
     year_str, month_str, day_time_str = datetime_str.replace('-', '/').split('/')
     day_str, time_str = day_time_str.split(' ')
-    hour_str, minute_str = time_str.split(':')
+    if len(time_str.split(':')) == 3:
+        hour_str, minute_str, seconds_str = time_str.split(':')
+    else:
+        hour_str, minute_str = time_str.split(':')
     year, month, day = int(year_str), int(month_str), int(day_str)
     hour, minute = int(hour_str), int(minute_str)
     return datetime.datetime(year, month, day, hour, minute)
